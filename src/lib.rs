@@ -507,6 +507,9 @@ pub fn receive_packets(
                     // heartbeat packets are empty
                     if packet.is_empty() {
                         debug!("Received heartbeat packet");
+                        debug!("Sending hearbeat packet response on h:{}", handle);
+                        // heartbeat packets are empty
+                        connection.send(Packet::new()).unwrap();
                         // discard without sending a NetworkEvent
                         continue;
                     }
